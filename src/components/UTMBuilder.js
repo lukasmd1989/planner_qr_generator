@@ -32,17 +32,17 @@ export const UTMBuilder = () => {
     if (id === "domain") 
       value ? setDomain(`${value}`) : setDomain(``);
     if (id === "source")
-      value ? setSource(`?utm_source=${value}`) : setSource("");
+      value ? setSource(`&utm_source=${value}`) : setSource("");
     if (id === "medium")
       value ? setMedium(`&utm_medium=${value}`) : setMedium("");
     if (id === "campaign")
-      value ? setCampaign(`&utm_campaign=${value}`) : setCampaign("");
+      value ? setCampaign(`${value}`) : setCampaign("");
     if (id === "term") 
       value ? setTerm(`&utm_term=${value}`) : setTerm("");
-    if (id === "content")
+    if (id === "anchor")
       value ? setContent(`&utm_content=${value}`) : setContent("");
     if (id === "anchor")
-      value ? setAnchor(`&#${value}`) : setAnchor("");
+      value ? setAnchor(`&#/planner?vpc=${value}`) : setAnchor("");
     
       setCopied(false);
   };
@@ -55,100 +55,20 @@ export const UTMBuilder = () => {
             <div className="row mb-3 align-items-center">
               <div className="col-3">
                 <label htmlFor="domain" className="col-form-label">
-                  Website URL <span className="mandatory-star">*</span>
+                  Planner <span className="mandatory-star">*</span>
                 </label>
               </div>
               <div className="col-5">
-                <input
-                  type="text"
-                  id="domain"
-                  className="form-control"
-                  aria-describedby="passwordHelpInline"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="col-4">
-                <span id="passwordHelpInline" className="form-text">
-                  (https://www.example.com)
-                </span>
-              </div>
-            </div>
-
-            <div className="row mb-3 align-items-center">
-              <div className="col-3">
-                <label htmlFor="source" className="col-form-label">
-                  UTM Source <span className="mandatory-star">*</span>
-                </label>
-              </div>
-              <div className="col-5">
-                <input list="source1" id="source" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
-                <datalist id="source1">
-                  <option value="facebook"/>
-                  <option value="twitter"/>
-                  <option value="google"/>
-                  <option value="linkedin"/>
-                  <option value="instagram"/>
-                  <option value="yandex"/>
-                  <option value="bing"/>
-                  <option value="baidu"/>
-                  <option value="yahoo"/>
-                  <option value="naver"/>
-                  <option value="weixin bridge"/>
-                  <option value="youtube"/>
-                  <option value="pinterest"/>
-                  <option value="newsletter"/>
-                  <option value="shortlink"/>
-                  <option value="catalogue"/>
-                  <option value="spotify"/>
-                  <option value="prosieben"/>
-                  <option value="wifi"/>
-                  <option value="instore"/>
-                  <option value="store85"/>
-                  <option value="store90"/>
-                  <option value="store155"/>
-                  <option value="store273"/>
-                  <option value="store386"/>
-                  <option value="store387"/>
-                  <option value="store388"/>
-                  <option value="store587"/>
-                  <option value="kleinezeitung"/>
+                <input list="domain1" id="domain" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
+                <datalist id="domain1">
+                  <option value="https://www.ikea.com/addon-app/storageone/pax/web/latest/?range=pax&uiPlatform=web&locale=de-AT">Pax Planner</option>
+                  <option value="2">New Planner</option>
+                  <option value="3">Old Planner</option>
                 </datalist>
               </div>
               <div className="col-4">
                 <span id="passwordHelpInline" className="form-text">
-                  (google, newsletter, social)
-                </span>
-              </div>
-            </div>
-
-            <div className="row mb-3 align-items-center">
-              <div className="col-3">
-                <label htmlFor="medium" className="col-form-label">
-                  UTM Medium <span className="mandatory-star">*</span>
-                </label>
-              </div>
-              <div className="col-5">
-                <input list="medium1" id="medium" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
-                <datalist id="medium1">
-                  <option value="paid search"/>
-                  <option value="display"/>
-                  <option value="email"/>
-                  <option value="referral"/>
-                  <option value="social"/>
-                  <option value="affiliate"/>
-                  <option value="video"/>
-                  <option value="sms"/>
-                  <option value="app"/>
-                  <option value="qrcode"/>
-                  <option value="sitelink"/>
-                  <option value="ooh"/>
-                  <option value="print"/>
-                  <option value="tv"/>
-                </datalist>
-              </div>
-              <div className="col-4">
-                <span id="passwordHelpInline" className="form-text">
-                  (cpc, banner, email, campaign, ad)
+                  (Select the Planner)
                 </span>
               </div>
             </div>
@@ -160,17 +80,15 @@ export const UTMBuilder = () => {
                 </label>
               </div>
               <div className="col-5">
-                <input
-                  type="text"
-                  id="campaign"
-                  className="form-control"
-                  aria-describedby="passwordHelpInline"
-                  onChange={handleChange}
-                />
+                <input list="camp1" id="campaign" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
+                <datalist id="camp1">
+                  <option value="&utm_campaign=at_supportingcx_servicecommunication_0_fy22_digitalplanners&utm_source=instore&utm_medium=qrcode
+">Service Communication - Planner QR Code</option>
+                </datalist>
               </div>
               <div className="col-4">
                 <span id="passwordHelpInline" className="form-text">
-                  (Use Campaign Name Generetor)
+                  (Select the Service Communication Type)
                 </span>
               </div>
             </div>
@@ -178,41 +96,27 @@ export const UTMBuilder = () => {
             <div className="row mb-3 align-items-center">
               <div className="col-3">
                 <label htmlFor="term" className="col-form-label">
-                  Campaign Term
+                  Store
                 </label>
               </div>
               <div className="col-5">
                 <input list="terms1" id="term" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
                 <datalist id="terms1">
-                  <option value="Blau"/>
-                  <option value="Rot"/>
-                  <option value="Gruen"/>
+                  <option value="085">Vösendorf</option>
+                  <option value="090">Wien Nord</option>
                 </datalist>
               </div>
-              <div className="col-4"></div>
-            </div>
-
-            <div className="row mb-3 align-items-center">
-              <div className="col-3">
-                <label htmlFor="content" className="col-form-label">
-                  Campaign Content
-                </label>
+              <div className="col-4">
+                <span id="passwordHelpInline" className="form-text">
+                  (Select the Store or leave empty if the link applies to all Stores)
+                </span>
               </div>
-              <div className="col-5">
-                <input list="content1" id="content" className="form-control" aria-describedby="passwordHelpInline" onChange={handleChange} />
-                <datalist id="content1">
-                  <option value="1"/>
-                  <option value="2"/>
-                  <option value="3"/>
-                </datalist>
-              </div>
-              <div className="col-4"></div>
             </div>
 
             <div className="row mb-3 align-items-center">
               <div className="col-3">
                 <label htmlFor="anchor" className="col-form-label">
-                  Anchor
+                  Planner Code <span className="mandatory-star">*</span>
                 </label>
               </div>
               <div className="col-5">
@@ -226,14 +130,14 @@ export const UTMBuilder = () => {
               </div>
                <div className="col-4">
                 <span id="passwordHelpInline" className="form-text">
-                  (without #)
+                  (e.g.: CVQ9Y4)
                 </span>
               </div>
             </div>
           </form>
           <div className="row mb-3 align-items-center mt-4 text-center">
-              <h3 className="mb-4">Generated UTM campaign URL</h3>
-              <p className='small'>Share the below url in social media, ad campaign, and view the traffic in Google Analytics.</p>
+              <h3 className="mb-4">Final URL</h3>
+              <p className='small'>Copy the URL or the QR-Code below.</p>
              
             <textarea className="form-control" defaultValue={utmlink} />
 
