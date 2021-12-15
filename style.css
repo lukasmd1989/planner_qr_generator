@@ -1,3 +1,29 @@
-h1, p {
-  font-family: Lato;
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
+.container {
+  max-width: 960px;
+}
+
+h1{
+    padding-bottom: 1rem;
+}
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+.mandatory-star{
+    color:red;
+}
+textarea.form-control{
+    font-size: 14px;
+    background-color: #f9f9f9;
+}
+body {
+  font-family: 'Lato';
 }
